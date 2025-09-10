@@ -1,0 +1,14 @@
+services:
+  terraform:
+    image: hashicorp/terraform:1.13.1
+    container_name: terraform
+    working_dir: /tf
+    volumes:
+      - ./setup:/tf/setup
+      - ./deploy:/tf/deploy
+      - ~/.aws:/root/.aws:ro  # Mount AWS credentials/config (read-only)
+    environment:
+      - AWS_PROFILE           # Forward whatever profile is active locally
+      - AWS_DEFAULT_REGION    # Optional, forward default region if set
+      - TF_WORKSPACE=default  # Default workspace, can be overridden
+    
