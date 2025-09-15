@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket               = "django-recipe-devops"
+    bucket = "django-recipe-devops"
     #key                  = "tfstate/deploy"
-    key = "tf-state-deploy"
+    key                  = "tf-state-deploy"
     workspace_key_prefix = "tf-state-deploy-env" # "values/${terraform.workspace}"
     region               = "us-east-1"
     dynamodb_table       = "django-recipe-devops-tf-lock"
